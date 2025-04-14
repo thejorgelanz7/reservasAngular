@@ -1,0 +1,38 @@
+@if (!selectedBarber) {
+    @for (barbero of barbers; track barbero.id) {
+      <app-all-barbers-card 
+        [barber]="barbero" 
+        (idSeleccionado)="seleccionarBarbero($event)">
+      </app-all-barbers-card>
+    }
+  } @else {
+    <app-single-barber 
+      [barber]="selectedBarber" 
+      (volver)="volverTodosBarberos()">
+    </app-single-barber>
+  
+    <label for="date_cita">Fecha de la cita</label>
+    <input type="date" id="date_cita" 
+           [(ngModel)]="selectedDate" 
+           (change)="getCitasDisp(selectedBarber.id, selectedDate)">
+    <br>
+  
+    @if (citasDisponibles) {
+      @for (cita of citasDisponibles; track cita.id) {
+        @if (cita.disponible) {
+          <label>
+            <input type="radio"
+                   name="cita"
+                   [value]="cita"
+                   [(ngModel)]="selectedCita">
+            {{ cita.start_time }}
+          </label><br>
+        }
+      }
+  
+      <button type="button" (click)="crearCita()">Crear cita</button>
+    } @else {
+      <p>No hay citas disponibles</p>
+    }
+  }
+  

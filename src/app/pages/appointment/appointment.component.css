@@ -1,0 +1,168 @@
+.appointment-container {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+  
+  h2, h3 {
+    color: #333;
+    margin-bottom: 20px;
+  }
+  
+  .barbers-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 20px;
+  }
+  
+  .barber-card {
+    background-color: #fff;
+    border-radius: 8px;
+    padding: 15px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s;
+    text-align: center;
+  }
+  
+  .barber-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+  }
+  
+  .barber-card img {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin: 0 auto 10px;
+    display: block;
+  }
+  
+  .barber-card h4 {
+    margin: 5px 0;
+    font-size: 18px;
+  }
+  
+  .barber-card p {
+    color: #666;
+    margin: 5px 0;
+  }
+  
+  /* Estilos para el barbero seleccionado */
+  .selected-barber-section {
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    padding: 20px;
+    margin-bottom: 30px;
+  }
+  
+  .selected-barber {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+  
+  .barber-info {
+    display: flex;
+    align-items: center;
+  }
+  
+  .barber-info img {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-right: 20px;
+  }
+  
+  .barber-details h4 {
+    margin: 0 0 5px;
+    font-size: 20px;
+  }
+  
+  .barber-details p {
+    margin: 5px 0;
+    color: #666;
+  }
+  
+  .change-selection {
+    background-color: transparent;
+    border: 1px solid #ccc;
+    color: #666;
+    padding: 8px 15px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+  }
+  
+  .change-selection:hover {
+    background-color: #f0f0f0;
+  }
+  
+  /* Estilos para la selección de horarios */
+  .time-slots {
+    margin-top: 20px;
+  }
+  
+  .slots-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+    gap: 10px;
+  }
+  
+  .time-slot {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    padding: 10px;
+    text-align: center;
+    cursor: pointer;
+    transition: background-color 0.2s;
+  }
+  
+  .time-slot:hover {
+    background-color: #f0f0f0;
+  }
+  
+  .time-slot.selected {
+    background-color: #007bff;
+    color: white;
+    border-color: #007bff;
+  }
+  
+  .no-slots, .loading {
+    padding: 20px;
+    text-align: center;
+    color: #666;
+    background-color: #f0f0f0;
+    border-radius: 4px;
+    margin-top: 20px;
+  }
+  
+  .confirm-btn {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 12px 25px;
+    border-radius: 4px;
+    font-size: 16px;
+    cursor: pointer;
+    margin-top: 30px;
+    display: block;
+    width: 100%;
+    max-width: 300px;
+    margin-left: auto;
+    margin-right: auto;
+    transition: background-color 0.2s;
+  }
+  
+  .confirm-btn:hover {
+    background-color: #0069d9;
+  }
+  
+  .confirm-btn:disabled {
+    background-color: #cccccc;
+    cursor: not-allowed;
+  }
