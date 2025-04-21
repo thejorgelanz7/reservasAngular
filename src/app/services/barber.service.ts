@@ -27,6 +27,13 @@ export class BarberService {
   }
   user(){
     return supabase.auth.getSession()
+
+  }
+
+  misCitas(id_user: string): Observable<any>{
+    return from(this.supabase
+      .from('appointments')
+    .select("*").eq("user_id", id_user))
   }
 
 

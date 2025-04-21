@@ -1,0 +1,27 @@
+<div class="bg-zinc-900 p-8 rounded-2xl max-w-md mx-auto shadow-lg text-white space-y-6 mt-10">
+    <!-- Sección de información del usuario -->
+    <div class="flex flex-col items-center text-center space-y-4">
+      <div class="w-24 h-24 rounded-full bg-zinc-700 flex items-center justify-center text-3xl font-bold text-white"> 👤
+      </div>
+      <div>
+        <h2 class="text-xl font-semibold text-white">Email: {{user.user.email}}</h2>
+        <p class="text-sm text-zinc-400"></p>
+      </div>
+    </div>
+  
+    <!-- Sección de citas -->
+    <div class="bg-zinc-800 p-4 rounded-xl space-y-4">
+      <h3 class="text-lg font-semibold text-white mb-2">Citas Agendadas</h3>
+      <div class="space-y-2">
+       
+          <div class="bg-zinc-700 p-3 rounded-md">
+            @for(user of InfoUser; track user.id){
+            <p class="text-sm text-zinc-300"><strong>Fecha:</strong> {{user.date}}</p>
+            <p class="text-sm text-zinc-300"><strong>Hora:</strong> {{user.time}}</p>
+            <p class="text-sm text-zinc-300"><strong>Email:</strong> {{user.email}}</p>
+            }
+          </div>
+      </div>
+    </div>
+  </div>
+  

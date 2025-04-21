@@ -1,4 +1,0 @@
-export const environment = {
-    API_URL:"https://cavsynurnhjmeuxymtra.supabase.co",
- API_KEY:"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImNhdnN5bnVybmhqbWV1eHltdHJhIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDI2Mjc4NjMsImV4cCI6MjA1ODIwMzg2M30.meDnqaZzTJnAUi0aYXLQFRloxsnQ_LXW1a6oWzjlb-c"
-}

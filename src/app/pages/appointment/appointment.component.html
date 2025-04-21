@@ -1,38 +1,74 @@
-@if (!selectedBarber) {
-    @for (barbero of barbers; track barbero.id) {
-      <app-all-barbers-card 
-        [barber]="barbero" 
-        (idSeleccionado)="seleccionarBarbero($event)">
-      </app-all-barbers-card>
-    }
-  } @else {
-    <app-single-barber 
-      [barber]="selectedBarber" 
-      (volver)="volverTodosBarberos()">
-    </app-single-barber>
-  
-    <label for="date_cita">Fecha de la cita</label>
-    <input type="date" id="date_cita" 
-           [(ngModel)]="selectedDate" 
-           (change)="getCitasDisp(selectedBarber.id, selectedDate)">
-    <br>
-  
-    @if (citasDisponibles) {
-      @for (cita of citasDisponibles; track cita.id) {
-        @if (cita.disponible) {
-          <label>
-            <input type="radio"
-                   name="cita"
-                   [value]="cita"
-                   [(ngModel)]="selectedCita">
-            {{ cita.start_time }}
-          </label><br>
-        }
+<div class="flex justify-end mb-4">
+  <a 
+    routerLink="/user" 
+    class="flex items-center gap-2 bg-zinc-800 hover:bg-zinc-700 text-white px-4 py-2 rounded-xl shadow transition-all duration-200"
+  >
+    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-green-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5.121 17.804A4 4 0 0112 16h0a4 4 0 016.879 1.804M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+    </svg>
+    <span class="text-sm">Mi perfil</span>
+  </a>
+  <button *ngIf="isLoggedIn" (click)="logout()">
+    Cerrar sesión
+  </button>
+</div>
+<div class="p-6 bg-zinc-900 min-h-screen text-white">
+  @if (!selectedBarber) {
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+      @for (barbero of barbers; track barbero.id) {
+        <app-all-barbers-card 
+          [barber]="barbero" 
+          (idSeleccionado)="seleccionarBarbero($event)">
+        </app-all-barbers-card>
       }
+    </div>
+  } @else {
+    <div class="flex flex-col gap-6 max-w-xl mx-auto bg-zinc-800 p-6 rounded-2xl shadow-lg">
+      <app-single-barber 
+        [barber]="selectedBarber" 
+        (volver)="volverTodosBarberos()">
+      </app-single-barber>
+    
+      <label for="date_cita" class="text-sm text-zinc-300">Fecha de la cita</label>
+      <input 
+        type="date" 
+        id="date_cita" 
+        [(ngModel)]="selectedDate" 
+        (change)="getCitasDisp(selectedBarber.id, selectedDate)"
+        class="bg-zinc-700 text-white p-2 rounded-md w-full"
+      >
   
-      <button type="button" (click)="crearCita()">Crear cita</button>
-    } @else {
-      <p>No hay citas disponibles</p>
-    }
+      @if (citasDisponibles) {
+        <div class="flex flex-wrap gap-3 citas-container">
+          @for (cita of citasDisponibles; track cita.id) {
+            @if (cita.disponible) {
+              <label class="cita-card relative cursor-pointer px-4 py-2 rounded-lg border border-zinc-700 text-sm text-zinc-200 transition-all duration-200 hover:bg-zinc-700">
+                <input 
+                  type="radio"
+                  name="cita"
+                  [value]="cita"
+                  [(ngModel)]="selectedCita"
+                  class="absolute opacity-0 peer"
+                >
+                <span class="peer-checked:text-green-400 peer-checked:font-semibold peer-checked:border-green-500 peer-checked:bg-zinc-800">
+                  {{ cita.start_time }}
+                </span>
+              </label>
+            }
+          }
+        </div>
+        
+  
+        <button 
+          type="button" 
+          (click)="crearCita()" 
+          class="mt-4 bg-green-500 hover:bg-green-600 text-white py-2 px-4 rounded-xl transition-all duration-200"
+        >
+          Crear cita
+        </button>
+      } @else {
+        <p class="text-zinc-400 italic">No hay citas disponibles</p>
+      }
+    </div>
   }
-  
+</div>

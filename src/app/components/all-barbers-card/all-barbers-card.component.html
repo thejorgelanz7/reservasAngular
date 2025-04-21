@@ -1,4 +1,21 @@
-<img [src]="barber.avatar_url" alt="">
-{{barber.id}}
-{{barber.name}}
-<button (click)="seleccionar()">Seleccionar</button>
+
+<div class="bg-zinc-800 text-white rounded-2xl shadow-md p-4 flex flex-col items-center gap-4 hover:bg-zinc-700 transition-all duration-300">
+    <img 
+      [src]="barber.avatar_url" 
+      alt="{{ barber.name }}" 
+      class="w-24 h-24 rounded-full object-cover border-4 border-zinc-600"
+    />
+  
+    <div class="text-center">
+      <h3 class="text-xl font-semibold">{{ barber.name }}</h3>
+      <p class="text-sm text-zinc-400">ID: {{ barber.id }}</p>
+    </div>
+  
+    <button 
+      (click)="seleccionar()" 
+      class="bg-green-500 hover:bg-green-600 text-white px-4 py-2 rounded-xl text-sm transition-all duration-200"
+    >
+      Seleccionar
+    </button>
+  </div>
+  
